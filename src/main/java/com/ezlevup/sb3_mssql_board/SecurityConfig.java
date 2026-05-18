@@ -13,7 +13,7 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/", "/css/**", "/js/**", "/images/**").permitAll()
+						.requestMatchers("/", "/board/**", "/css/**", "/js/**", "/images/**").permitAll()
 						.anyRequest().authenticated())
 				.formLogin(Customizer.withDefaults())
 				.logout(Customizer.withDefaults())
