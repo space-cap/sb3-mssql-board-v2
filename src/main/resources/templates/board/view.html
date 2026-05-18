@@ -27,6 +27,39 @@
                 <button type="button" class="btn btn-danger">삭제</button>
             </div>
         </div>
+
+        <div class="card-footer bg-light border-top-0 px-4 py-4">
+    
+    <h5 class="mb-3">댓글 (<span th:text="${board.comments.size()}">0</span>)</h5>
+    
+    <div th:if="${#lists.isEmpty(board.comments)}" class="text-muted small mb-4">
+        첫 번째 댓글을 남겨보세요.
+    </div>
+    
+    <div th:each="comment : ${board.comments}" class="bg-white p-3 rounded shadow-sm mb-2">
+        <div class="d-flex justify-content-between mb-1">
+            <strong class="text-primary" th:text="${comment.writer}">댓글작성자</strong>
+            <span class="text-muted small" th:text="${#temporals.format(comment.createdAt, 'yyyy-MM-dd HH:mm')}">2026-05-18 18:00</span>
+        </div>
+        <div style="white-space: pre-wrap;" th:text="${comment.content}">댓글 내용이 출력됩니다.</div>
+    </div>
+
+    <form th:action="@{/comment/write/{boardId}(boardId=${board.id})}" method="post" class="mt-4 border-top pt-4">
+        <div class="row g-2">
+            <div class="col-md-3">
+                <input type="text" name="writer" class="form-control" placeholder="작성자 이름" required>
+            </div>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <textarea name="content" class="form-control" rows="1" placeholder="댓글을 입력해 주세요." required></textarea>
+                    <button class="btn btn-primary" type="submit">등록</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
     </div>
 </div>
 
