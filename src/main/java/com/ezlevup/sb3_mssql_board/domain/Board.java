@@ -1,5 +1,7 @@
 package com.ezlevup.sb3_mssql_board.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -7,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,6 +41,9 @@ public class Board {
 
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
+
+	@OneToMany(mappedBy = "board")
+	private List<Comment> comments = new ArrayList<>();
 
 	public void update(String title, String content) {
 		this.title = title;
