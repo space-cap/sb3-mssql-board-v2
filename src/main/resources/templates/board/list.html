@@ -33,9 +33,9 @@
                     <td th:text="${board.id}">1</td>
                     <td class="text-start">
                         <a th:href="@{/board/view/{id}(id=${board.id}, page=${page.number})}"
-                           th:text="${board.title}"
                            class="text-decoration-none text-dark fw-semibold">
-                            테스트 제목입니다
+                            <span th:text="${board.title}">테스트 제목입니다</span>
+                            <span class="badge bg-secondary ms-2" th:text="${board.comments.size()}">0</span>
                         </a>
                     </td>
                     <td th:text="${board.writer}">관리자</td>
