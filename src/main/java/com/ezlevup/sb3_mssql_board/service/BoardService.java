@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +19,11 @@ public class BoardService {
     // 글 목록 조회
     public List<Board> findAll() {
         return boardRepository.findAll();
+    }
+
+    // 기존의 List<Board> findAll()을 아래와 같이 변경/대체합니다.
+    public Page<Board> findPaginated(Pageable pageable) {
+        return boardRepository.findAll(pageable);
     }
 
     // 글 상세 조회
