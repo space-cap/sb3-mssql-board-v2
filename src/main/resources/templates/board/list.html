@@ -32,7 +32,7 @@
                 <tr th:each="board : ${boards}">
                     <td th:text="${board.id}">1</td>
                     <td class="text-start">
-                        <a th:href="@{/board/view/{id}(id=${board.id})}"
+                        <a th:href="@{/board/view/{id}(id=${board.id}, page=${page.number})}"
                            th:text="${board.title}"
                            class="text-decoration-none text-dark fw-semibold">
                             테스트 제목입니다

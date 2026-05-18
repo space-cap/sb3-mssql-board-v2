@@ -21,7 +21,7 @@
             게시글 본문 내용이 여기에 들어갑니다.
         </div>
         <div class="card-footer bg-white d-flex justify-content-between py-3">
-            <a th:href="@{/board/list}" class="btn btn-secondary">목록으로</a>
+            <a th:href="@{/board/list(page=${currentPage})}" class="btn btn-secondary">목록으로</a>
             <div>
                 <button type="button" class="btn btn-warning me-1">수정</button>
                 <button type="button" class="btn btn-danger">삭제</button>

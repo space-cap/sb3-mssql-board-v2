@@ -48,8 +48,11 @@ public class BoardController {
 
     // 2. 상세 조회
     @GetMapping("/view/{id}")
-    public String view(@PathVariable Long id, Model model) {
+    public String view(@PathVariable Long id,
+                       @RequestParam(defaultValue = "0") int page,
+                       Model model) {
         model.addAttribute("board", boardService.findById(id));
+        model.addAttribute("currentPage", page);
         return "board/view";
     }
 
