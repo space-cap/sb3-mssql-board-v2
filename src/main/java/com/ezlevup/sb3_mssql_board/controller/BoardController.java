@@ -1,6 +1,7 @@
 package com.ezlevup.sb3_mssql_board.controller;
 
 import com.ezlevup.sb3_mssql_board.domain.Board;
+import com.ezlevup.sb3_mssql_board.dto.BoardListDto;
 import com.ezlevup.sb3_mssql_board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +30,7 @@ public class BoardController {
         Pageable pageable = PageRequest.of(page, 10, Sort.by("id").descending());
         
         // 2. 페이징 처리된 데이터 조회
-        Page<Board> boardPage = boardService.findPaginated(pageable);
+        Page<BoardListDto> boardPage = boardService.findPaginated(pageable);
         
         // 3. 하단 내비게이션 바 번호 계산 (블록당 5개씩 표시 예시)
         int blockWidth = 5;

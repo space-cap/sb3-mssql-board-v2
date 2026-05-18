@@ -1,6 +1,7 @@
 package com.ezlevup.sb3_mssql_board.service;
 
 import com.ezlevup.sb3_mssql_board.domain.Board;
+import com.ezlevup.sb3_mssql_board.dto.BoardListDto;
 import com.ezlevup.sb3_mssql_board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,8 @@ public class BoardService {
     }
 
     // 기존의 List<Board> findAll()을 아래와 같이 변경/대체합니다.
-    public Page<Board> findPaginated(Pageable pageable) {
-        return boardRepository.findAll(pageable);
+    public Page<BoardListDto> findPaginated(Pageable pageable) {
+        return boardRepository.findBoardList(pageable);
     }
 
     // 글 상세 조회
