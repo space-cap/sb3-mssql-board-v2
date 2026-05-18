@@ -25,7 +25,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 					from Board b
 					left join b.comments c
 					group by b.id, b.title, b.writer, b.createdAt, b.viewCnt
-					order by b.id desc
 					""",
 			countQuery = "select count(b) from Board b"
 	)
